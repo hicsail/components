@@ -11,11 +11,9 @@ on:
 jobs:
   chromatic:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -25,4 +23,7 @@ jobs:
         run: npm install
 
       - name: Run Chromatic
-        run: npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN
+        uses: chromaui/action-next@v1
+        with:
+          project-token: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: true
