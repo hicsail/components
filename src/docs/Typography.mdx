@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Typography } from '@mui/material';
+
+<Meta title="Typography" />
+
+# Typography
+
+The Typography component in Material-UI allows you to easily apply typographic styles to your text. It provides various pre-defined styles for different types of text elements.
+
+## Examples
+
+### Headings
+
+Material-UI provides different levels of headings, from h1 to h6. You can use the <Typography> component with the `variant` prop to apply these styles.
+
+```tsx
+<Typography variant="h1">Heading 1</Typography>
+<Typography variant="h2">Heading 2</Typography>
+<Typography variant="h3">Heading 3</Typography>
+<Typography variant="h4">Heading 4</Typography>
+<Typography variant="h5">Heading 5</Typography>
+<Typography variant="h6">Heading 6</Typography>
+```
+
+### Body text
+
+The <Typography> component also offers styles for regular body text.
+
+```tsx
+<Typography variant="body1">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a enim enim. Phasellus tristique lacus id nibh ultricies, vel mattis nisi fringilla. Integer at justo finibus,
+  pharetra odio ut, tempor sem. Quisque tincidunt, massa nec posuere lacinia, tellus quam volutpat velit, nec faucibus enim erat a nibh.
+</Typography>
+<Typography variant="body2">
+  Nulla facilisi. Curabitur auctor, ligula vitae luctus vulputate, dolor felis aliquet risus, vel feugiat odio lectus sed sem. Duis et fringilla urna, id efficitur mi. Proin
+  tincidunt hendrerit justo, et fermentum urna viverra vitae.
+</Typography>
+```
+
+### Variants
+
+Material-UI offers additional variant options for the <Typography> component, such as subtitle1, subtitle2, caption, and more. These variants can be used to apply different styles to specific types of text.
+
+```tsx
+<Typography variant="subtitle1">Subtitle 1</Typography>
+<Typography variant="subtitle2">Subtitle 2</Typography>
+<Typography variant="caption">Caption text</Typography>
+```
