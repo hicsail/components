@@ -52,7 +52,7 @@ export const Primary: Story = {
 // Primary.parameters = {
 //     formik: {
 //         initialValues: {
-//              [Primary.args.name]: 'default'
+//              [Primary.args.name]: 'Default Value'
 //         }
 //     }
 // }

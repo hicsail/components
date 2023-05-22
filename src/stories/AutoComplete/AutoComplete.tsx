@@ -18,8 +18,7 @@ export interface AutoCompleteOption {
     return (option.label)  || 'None'
   }
   export const AutoCompleteInput: FC<AutoCompleteInputProps & TextFieldProps> = (props) => {
-    const { handleChange, handleBlur, values, touched, errors, isSubmitting } = useFormikContext<any>();    
-    console.log(values[props.name]);
+    const { handleChange, handleBlur, values, touched, errors, isSubmitting } = useFormikContext<any>();
     return (
       <FormControl variant={props.variant} fullWidth={props.fullWidth}>
         <Autocomplete
@@ -34,7 +33,6 @@ export interface AutoCompleteOption {
           value={values[props.name]}
           getOptionLabel={getOptionLabel}
           disabled={props.disabled || isSubmitting}
-          sx={{width:'600px'}}
         />
       </FormControl>
     );
