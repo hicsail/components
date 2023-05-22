@@ -46,13 +46,14 @@ const topMovies = [
 export const Primary: Story = {
     args: {
         name: 'primary-text-input',
-        options: topMovies
+        options: topMovies,
+        sx: {width:'600px'}
     }
 }
-// Primary.parameters = {
-//     formik: {
-//         initialValues: {
-//              [Primary.args.name]: 'Default Value'
-//         }
-//     }
-// }
+Primary.parameters = {
+    formik: {
+        initialValues: {
+             [Primary.args.name]: {label: '', value: ''}
+        }
+    }
+}
