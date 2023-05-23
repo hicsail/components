@@ -1,5 +1,5 @@
-import { PasswordInput } from '../stories/PasswordInput'
-import { SubmitButton } from '../stories/SubmitButton'
+import { PasswordInput } from '../stories/PasswordInput/PasswordInput'
+import { SubmitButton } from '../stories/SubmitButton/SubmitButton'
 import { TextInput } from '../stories/TextInput'
 import { Form, Formik } from 'formik'
 import {Box, Card, CardContent, CardHeader, Container} from '@mui/material'

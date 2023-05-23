@@ -1,13 +1,11 @@
-import { FC, useCallback, useEffect, useState } from 'react';
-import { Box, Typography, useTheme, Container, colors } from '@mui/material';
-import { SubmitButton } from '../stories/SubmitButton';
-import { AutoCompleteInput, AutoCompleteOption } from '../stories/AutoComplete/AutoComplete';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Box, Typography, Container } from '@mui/material';
+import { SubmitButton } from '../stories/SubmitButton/SubmitButton';
+import { AutoCompleteInput } from '../stories/AutoComplete/AutoComplete';
 import { Formik, Form,  } from 'formik';
 import topMovies from './movie-options';
 
 const AutoCompletePage = () => {
-    const navigate = useNavigate();
     const [initialValues, setInitialValues] = useState({
         movies: {label: '', value: ''}
     });
@@ -38,7 +36,6 @@ const AutoCompletePage = () => {
                 <Formik
                     initialValues={initialValues}
                     onSubmit={async (values, actions) => {
-                        console.log(values['movies'].label)
                         setInitialValues({movies: {label: values.movies.label, value: values.movies.value}})
                     }}
                     
