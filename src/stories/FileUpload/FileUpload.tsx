@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Box, Theme, Typography, useTheme } from '@mui/material';
 import { SxProps } from '@mui/system';
+import { useFormikContext } from 'formik';
 
 export interface CustomFile extends File {
   preview?: string;
@@ -19,8 +20,10 @@ export interface FileUploadProps {
 
 export const FileUpload: FC<FileUploadProps> = (props) => {
   const theme = useTheme();
+//   const { handleChange, handleBlur, values, touched, errors, isSubmitting } = useFormikContext<any>();    
   const handleDrop = useCallback((acceptedFiles: any) => {
     props.onChange(acceptedFiles);
+    
   }, []);
   const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
     onDrop: handleDrop,
