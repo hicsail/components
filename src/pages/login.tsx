@@ -69,22 +69,6 @@ const LoginPage = () => {
                 </Formik>
             </Box>
         </Container>
-
-    
-
-
-
-
-
-
-        // <Grid container rowSpacing={2} direction="column">
-        //     <Grid item xs={6}>
-        //         <h1>Welcome to login page</h1>
-        //     </Grid>
-        //     <Grid item xs={8} sx={{justifyItems:'center'}}>
-               
-        //     </Grid>
-        // </Grid>
     )
 }
 
