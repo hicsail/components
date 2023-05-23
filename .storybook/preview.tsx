@@ -7,48 +7,20 @@ import '@fontsource/material-icons';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { darkTheme } from '../src/theme/dark.theme';
 import { lightTheme } from '../src/theme/light.theme';
-import { useMemo } from 'react';
+import { withThemeFromJSXProvider } from '@storybook/addon-styling';
 
 // .storybook/preview.js
-
-export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    title: 'Theme',
-    description: 'Theme for your components',
-    defaultValue: 'light',
-    toolbar: {
-      icon: 'paintbrush',
-      dynamicTitle: true,
-      items: [
-        { value: 'light', left: '☀️', title: 'Light mode' },
-        { value: 'dark', left: '🌙', title: 'Dark mode' }
-      ]
-    }
-  }
-};
-
-const THEMES = {
-  light: lightTheme,
-  dark: darkTheme
-};
-
-export const withMuiTheme = (Story, context) => {
-  // The theme global we just declared
-  const { theme: themeKey } = context.globals;
-
-  // only recompute the theme if the themeKey changes
-  const theme = useMemo(() => THEMES[themeKey] || THEMES['light'], [themeKey]);
-
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Story />
-    </ThemeProvider>
-  );
-};
-
-export const decorators = [withMuiTheme];
+export const decorators = [
+  withThemeFromJSXProvider({
+    themes: {
+      light: lightTheme,
+      dark: darkTheme
+    },
+    defaultTheme: 'light',
+    Provider: ThemeProvider,
+    GlobalStyles: CssBaseline
+  })
+];
 
 const preview: Preview = {
   parameters: {
