@@ -4,8 +4,10 @@ import { SubmitButton } from '../stories/SubmitButton/SubmitButton';
 import { AutoCompleteInput } from '../stories/AutoComplete/AutoComplete';
 import { Formik, Form,  } from 'formik';
 import topMovies from './movie-options';
+import { useNavigate } from 'react-router-dom';
 
 const AutoCompletePage = () => {
+    const navigate = useNavigate();
     const [initialValues, setInitialValues] = useState({
         movies: {label: '', value: ''}
     });
@@ -37,6 +39,9 @@ const AutoCompletePage = () => {
                     initialValues={initialValues}
                     onSubmit={async (values, actions) => {
                         setInitialValues({movies: {label: values.movies.label, value: values.movies.value}})
+                        setTimeout(() => {
+                            navigate('/fileUpload')
+                        }, 1000)
                     }}
                     
                 >
