@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FileUpload, CustomFile, FileUploadProps } from './FileUpload';
+import { FileUpload, CustomFile } from './FileUpload';
 import { withFormik } from '@bbbtech/storybook-formik';
-import React, {useState} from 'react';
 
 const meta = {
     decorators: [withFormik],
@@ -30,20 +29,26 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const errorFunc: (file:CustomFile) => boolean = (file) => {
-    console.log('file error type: ', file);
+const handleChange = async(files: CustomFile[]) => {
+    const file = files[0];
+    const reader = new FileReader();
+    reader.onload = async(event) => {
+        const fileContent = event.target?.result as string;
+    };
 
-    return file.type === 'text/csv';
-
-}
-const [error, setError] = useState(false);
-
+    reader.readAsText(file);
+    }
 export const Primary: Story = {
     
     args: {
-        onChange: (file) => {console.log((file[0].type))},
+        onChange: (files) => {handleChange(files)},
+        name: 'file-upload',
         title: 'New Title',
         caption: 'Not all files are accepted. Only CSV for now',
-        error: true
+        error: false,
+        multiple: true,
+        acceptedFileType:{
+            'text/csv': ['.csv']
+          } 
     }
 }

@@ -8,31 +8,36 @@ export interface CustomFile extends File {
   preview?: string;
 }
 
+// following the example react-dropzone provided in their documentation
+// https://react-dropzone.org/#!/Accepting%20specific%20file%20types
+type FileTypeMap = {
+  [mimeType: string]: string[];
+};
+
 export interface FileUploadProps {
+  name: string;
   title?: string;
   caption?: string;
   error?: boolean;
-  value?: CustomFile;
+  value?: CustomFile | null;
   onChange: (file: CustomFile[]) => void;
   multiple?: boolean;
   sx?: SxProps<Theme>;
+  acceptedFileType: FileTypeMap 
 }
 
 export const FileUpload: FC<FileUploadProps> = (props) => {
   const theme = useTheme();
-//   const { handleChange, handleBlur, values, touched, errors, isSubmitting } = useFormikContext<any>();    
-  const handleDrop = useCallback((acceptedFiles: any) => {
+  const { handleChange, handleBlur, values, touched, errors, isSubmitting, setFieldValue } = useFormikContext<any>();
+  
+  const handleDrop = useCallback((acceptedFiles: CustomFile[]) => {
     props.onChange(acceptedFiles);
-    
+    setFieldValue(props.name, acceptedFiles);
   }, []);
   const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
     onDrop: handleDrop,
     multiple: props.multiple,
-    accept: { // might be something we want to make a prop 
-        'image/png': ['.png'],
-        'text/html': ['.html', '.htm'],
-        'text/csv': ['.csv']
-      } // find the appropriate key-value pair for .csv, .xls, .xlsx, .pem
+    accept: props.acceptedFileType
   });
 
   useEffect(
@@ -94,7 +99,7 @@ export const FileUpload: FC<FileUploadProps> = (props) => {
               <Typography variant="body2" component="span" sx={{ color: 'primary.main' }}>
                 browse
               </Typography>
-              &nbsp;thorough your machine
+              &nbsp;through your machine
             </Typography>
           )}
         </Box>
