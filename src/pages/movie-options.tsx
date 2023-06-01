@@ -1,4 +1,4 @@
-import { AutoCompleteOption } from "../stories/AutoComplete/AutoComplete";
+import { AutoCompleteOption } from "../components/AutoComplete/AutoComplete";
 
 // 76 movies in the object
 export const topMovies: AutoCompleteOption[] = [

@@ -16,7 +16,7 @@ const AutoCompletePage = () => {
     return (
         <Container
             component="main"
-            maxWidth="xl"   
+            maxWidth="xl"
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -37,13 +37,13 @@ const AutoCompletePage = () => {
                 <Typography sx={{color:'black', justifySelf:'center', marginBottom: '10px', fontSize:30}} variant='h2'>Movie picked: {initialValues.movies.label}</Typography>
                 <Formik
                     initialValues={initialValues}
-                    onSubmit={async (values, actions) => {
+                    onSubmit={async (values) => {
                         setInitialValues({movies: {label: values.movies.label, value: values.movies.value}})
                         setTimeout(() => {
                             navigate('/fileUpload')
                         }, 1000)
                     }}
-                    
+
                 >
                     <Form
                         style={{alignItems:'self-end'}}
@@ -65,10 +65,9 @@ const AutoCompletePage = () => {
                 </Formik>
             </Box>
         </Container>
-    ) 
+    )
 }
 
 export default AutoCompletePage;
 
-  
-  
+

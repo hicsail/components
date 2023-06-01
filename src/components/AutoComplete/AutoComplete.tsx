@@ -6,12 +6,12 @@ export interface AutoCompleteOption {
     label: string;
     value: string;
   }
-  
+
   export interface AutoCompleteInputProps {
     name: string;
     options: AutoCompleteOption[];
   }
-  
+
   export const AutoCompleteInput: FC<AutoCompleteInputProps & TextFieldProps> = (props) => {
     const { handleChange, handleBlur, values, touched, errors, isSubmitting } = useFormikContext<any>();
     return (
@@ -21,7 +21,7 @@ export interface AutoCompleteOption {
           renderInput={(params: any) => (
             <TextField {...props} {...params} error={!!errors[props.name]} helperText={(touched[props.name] && errors[props.name]) as string} InputLabelProps={{ shrink: true }} label={props.label} />
           )}
-          onChange={(event, value) => {
+          onChange={(_event, value) => {
             handleChange({ target: { name: props.name, value: value } });
           }}
           onBlur={handleBlur}

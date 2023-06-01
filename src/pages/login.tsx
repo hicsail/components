@@ -1,6 +1,6 @@
-import { PasswordInput } from '../stories/PasswordInput/PasswordInput'
-import { SubmitButton } from '../stories/SubmitButton/SubmitButton'
-import { TextInput } from '../stories/TextInput'
+import { PasswordInput } from '../components/PasswordInput/PasswordInput'
+import { SubmitButton } from '../components/SubmitButton/SubmitButton'
+import { TextInput } from '../components/TextInput'
 import { Form, Formik } from 'formik'
 import {Box, Card, CardContent, CardHeader, Container} from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -43,7 +43,7 @@ const LoginPage = () => {
                     }}
                 >
                     <Form>
-                        <Card sx={{marginBottom:'16px'}}>  
+                        <Card sx={{marginBottom:'16px'}}>
                             <CardHeader title="Sign In"/>
                             <CardContent sx={{'& > * + *': {marginTop:'10px'}}}>
                                     <TextInput

@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom'; 
+import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
 import LoginPage from '../pages/login';
 import AutoCompletePage from '../pages/autcomplete';
-import FileUpload from '../pages/fileUpload';
 import reactLogo from '../assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
@@ -11,11 +10,11 @@ import FileUploadPage from '../pages/fileUpload';
 
 
 const Home = () => {
-  
+
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
   return (
-    <>      
+    <>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -55,7 +54,7 @@ function App() {
     </Routes>
   </BrowserRouter>
   )
-  
+
 }
 
 export default App
