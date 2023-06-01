@@ -1,5 +1,5 @@
-import { SubmitButton } from '../stories/SubmitButton/SubmitButton'
-import { FileUpload, CustomFile } from '../stories/FileUpload/FileUpload'
+import { SubmitButton } from '../components/SubmitButton/SubmitButton'
+import { FileUpload, CustomFile } from '../components/FileUpload/FileUpload'
 import { Form, Formik } from 'formik'
 import {Box, Card, CardContent, CardHeader, Container} from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -18,7 +18,7 @@ const handleChange = async(files: CustomFile[]) => {
 const acceptedFiles = {
     'text/csv': ['.csv'],
     'image/*': []
-  } 
+  }
 
 const FileUploadPage = () => {
     const navigate = useNavigate();
@@ -52,7 +52,7 @@ const FileUploadPage = () => {
                 >
                     {({values}) => (
                         <Form>
-                        <Card sx={{marginBottom:'16px'}}>  
+                        <Card sx={{marginBottom:'16px'}}>
                             <CardHeader title="Upload Your File Here!"/>
                             <CardContent sx={{'& > * + *': {marginTop:'10px'}}}>
                                 <FileUpload
@@ -71,7 +71,7 @@ const FileUploadPage = () => {
                         />
                     </Form>
                     )}
-                    
+
                 </Formik>
             </Box>
         </Container>

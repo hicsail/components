@@ -23,13 +23,13 @@ export interface FileUploadProps {
   onChange: (file: CustomFile[]) => void;
   multiple?: boolean;
   sx?: SxProps<Theme>;
-  acceptedFileType: FileTypeMap 
+  acceptedFileType: FileTypeMap
 }
 
 export const FileUpload: FC<FileUploadProps> = (props) => {
   const theme = useTheme();
-  const { handleChange, handleBlur, values, touched, errors, isSubmitting, setFieldValue } = useFormikContext<any>();
-  
+  const { setFieldValue } = useFormikContext<any>();
+
   const handleDrop = useCallback((acceptedFiles: CustomFile[]) => {
     props.onChange(acceptedFiles);
     setFieldValue(props.name, acceptedFiles);
