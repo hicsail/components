@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "outDir": "dist",
+    "types": ["vitest", "vite/client", "@testing-library/jest-dom"]
+  },
+  "include": ["src", ".storybook", "tsup.config.ts", "vite.config.ts"]
+}
