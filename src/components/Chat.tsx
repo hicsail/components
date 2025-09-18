@@ -26,6 +26,27 @@ export const Chat: FC<ChatProps> = ({ type, color, btnColor, btnColorHover, msgC
   const [messages, setMessages] = useState<any[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (!subscribeUrl) return;
+
+    const eventSource = new EventSource(subscribeUrl, { withCredentials: false });
+
+    const onMessage = (evt: MessageEvent) => {
+      // TODO: Update payload structure, return to called if needed
+      const text = evt.data;
+      setMessages((prev) => [...prev, { text, sender: 'bot' }]);
+    };
+
+    const onError = () => {
+      setMessages((prev) => [...prev, { text: 'Connection error. Retrying...', sender: 'bot' }]);
+    };
+
+    eventSource.addEventListener('message', onMessage);
+    eventSource.addEventListener('error', onError);
+
+    return () => eventSource.close();
+  }, [subscribeUrl]);
+
   const handleSendMessage = async () => {
     if (input.trim() !== '') {
       const newMessages = [...messages, { text: input, sender: 'user' }];
@@ -33,17 +54,13 @@ export const Chat: FC<ChatProps> = ({ type, color, btnColor, btnColorHover, msgC
       setInput('');
 
       try {
-        const response = await fetch(apiUrl, {
+        await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question: input })
+          body: JSON.stringify({ message: input })
         });
-
-        const data = await response.json();
-
-        setMessages((prevMessages) => [...prevMessages, { text: data.answer, sender: 'bot' }]);
       } catch (error) {
-        console.error('Error fetching response:', error);
+        console.error('Error sending message:', error);
       }
     }
   };
